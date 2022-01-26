@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "api-server": {
+      "commandName": "Project",
+      "launchUrl": "weatherforecast",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "nativeDebugging": false,
+      "applicationUrl": "http://0.0.0.0:5000"
+    }
+  }
+}

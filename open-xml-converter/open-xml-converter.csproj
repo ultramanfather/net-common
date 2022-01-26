@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>open-xml-converter</AssemblyName>
+    <RootNamespace>OpenXmlConverter</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <NoWarn>1701;1702;NU1701</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;NU1701</NoWarn>
+  </PropertyGroup>
+	<ItemGroup>
+		<Content Include="Resources\*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Resources\landscape_logo.png" />
+	  <None Remove="Resources\landscape_watermark.png" />
+	  <None Remove="Resources\portrait_logo.png" />
+	  <None Remove="Resources\portrait_watermark.png" />
+	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.13.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\library\library.csproj" />
+    <ProjectReference Include="..\office-converter\office-converter.csproj" />
+  </ItemGroup>
+
+</Project>
