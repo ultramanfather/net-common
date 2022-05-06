@@ -257,7 +257,7 @@ namespace OpenXmlConverter
             string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory ?? string.Empty,
                 "Resources",
                 (isLandscape ? "landscape" : "portrait") + "_logo.png");
-            using (FileStream stream = new FileStream(filepath, FileMode.Open))
+            using (FileStream stream = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
                 size = ImagePrefetcher.GetImageSize(stream);
                 stream.Seek(0, SeekOrigin.Begin);
@@ -563,7 +563,7 @@ namespace OpenXmlConverter
             string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory ?? string.Empty,
                 "Resources",
                 (isLandscape ? "landscape" : "portrait") + "_watermark.png");
-            using (FileStream stream = new FileStream(filepath, FileMode.Open))
+            using (FileStream stream = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
                 size = ImagePrefetcher.GetImageSize(stream);
                 stream.Seek(0, SeekOrigin.Begin);
@@ -772,7 +772,7 @@ namespace OpenXmlConverter
             string filepath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory ?? string.Empty,
                 "Resources",
                 "header_left.jpg");
-            using (FileStream stream = new FileStream(filepath, FileMode.Open))
+            using (FileStream stream = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
                 size = ImagePrefetcher.GetImageSize(stream);
                 stream.Seek(0, SeekOrigin.Begin);
@@ -1004,7 +1004,7 @@ namespace OpenXmlConverter
             string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory ?? string.Empty,
                 "Resources",
                 "header_right.jpg");
-            using (FileStream stream = new FileStream(filepath, FileMode.Open))
+            using (FileStream stream = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
                 size = ImagePrefetcher.GetImageSize(stream);
                 stream.Seek(0, SeekOrigin.Begin);
@@ -1489,7 +1489,7 @@ namespace OpenXmlConverter
                     }
                 };
                 Run runs = new Run(rPr);
-                runs.Append(new Text("刷题、找试卷就用考霸刷题宝APP（第"));
+                runs.Append(new Text("刷题、找试卷就用考霸疯狂刷题APP（第"));
                 runs.Append(new FieldChar
                 {
                     FieldCharType = FieldCharValues.Begin,

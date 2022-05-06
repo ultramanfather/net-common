@@ -23,8 +23,9 @@ namespace APIServer.Controllers
 
         // HTML 转 Word
         [HttpPost("html-to-word")]
-        public string HTML2Word([FromBody] Library.Model.HTML2WordParam param)
+        public Library.Model.HTML2WordResponse HTML2Word([FromBody] Library.Model.HTML2WordParam param)
         {
+            Library.Model.HTML2WordResponse rsp = new Library.Model.HTML2WordResponse();
             // Word 保存路径
             string filename = Guid.NewGuid().ToString();
             param.Filepath = Path.Combine(staticDir, filename + ".docx");
@@ -32,17 +33,13 @@ namespace APIServer.Controllers
 
             // 生成Word
             OpenXmlConverter.Client.HTML2Word(param);
-            string ext;
             if (param.Setting.Convert2PDF == "1")
             {
-                ext = ".pdf";
+                rsp.PdfPath = staticFileRequestPath + "/" + filename + ".pdf";
             }
-            else
-            {
-                ext = ".docx";
-            }
+            rsp.WordPath = staticFileRequestPath + "/" + filename + ".docx";
 
-            return staticFileRequestPath + "/" + filename + ext;
+            return rsp;
         }
     }
 }

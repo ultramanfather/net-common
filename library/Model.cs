@@ -58,4 +58,10 @@
         public string PDFPath { get; set; } // PDF文件要保存到的路径
         public ExportWordSetting Setting { get; set; }
     }
+
+    public class HTML2WordResponse
+    {
+        public string WordPath { get; set; }
+        public string PdfPath { get; set; }
+    }
 }
